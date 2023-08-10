@@ -179,7 +179,7 @@ getIP();
 const socket = new WebSocket(WSURL);
 
 socket.onopen = () => {
-    console.info('Flusk Monitor error logger connected.??!!??!!');
+    console.info('Flusk Monitor error logger connected.');
 };
 
 socket.onmessage = (event) => {
@@ -206,7 +206,7 @@ socket.onmessage = (event) => {
 };
 
 socket.onclose = (event) => {
-    console.error("Flusk Activity Logger was closed for unexpected reasons.");
+    console.error("Flusk Activity Logger was closed for unexpected reasons. Reason: " + event.reason + ". Code: " + event.code);
 };
 
 let checkDevice = function(){
