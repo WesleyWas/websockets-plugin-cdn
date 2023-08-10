@@ -179,7 +179,7 @@ getIP();
 const socket = new WebSocket(WSURL);
 
 socket.onopen = () => {
-    console.info('Flusk Monitor error logger connected..');
+    console.info('Flusk Monitor error logger connected..!');
 };
 
 socket.onmessage = (event) => {
