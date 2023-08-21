@@ -1,28 +1,12 @@
 // Keep reference to original functions
 let _error = window.console.error;
 let _warn = window.console.warn;
-const singleEndpoint = "https://api.flusk.eu/api:monitor/webhook-front-end-errors";
-const bulkEndpoint = "https://api.flusk.eu/api:monitor/webhook-front-end-errors-on-load";
+const singleEndpoint = "https://api.flusk.eu/api:EI0uqZLQ/webhook-front-end-errors";
 const WSURL = "wss://monitor-v1.flusk.eu";
 let ip;
 let lastScreenshotTime = 0;
 const screenshotInterval = 5000;
 let device; //Can be tablet, phone, or computer
-
-
-let sendBulkErrorsToXano = function(){
-
-
-    let currentAppId = window.app._id;
-
-    let data = {
-        app_id: currentAppId,
-        errors: cleanErrors
-    }
-
-    sendToXano(data, bulkEndpoint);
-
-}
 
 function loadScript(src) {
     return new Promise((resolve, reject) => {
@@ -94,7 +78,7 @@ window.console.error = async function () {
     lastScreenshotTime = now;
 
     let screenshot;
-    let message = arguments[0]
+    let message = JSON.stringify(arguments[0]).slice(0, 5000);
     let currentAppId = window.app._id;
     let version = window.app.app_version;
     let userUID = window.bubble_session_uid;
