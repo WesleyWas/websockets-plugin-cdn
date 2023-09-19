@@ -190,6 +190,8 @@ socket.onmessage = (event) => {
 };
 
 socket.onclose = (event) => {
+    // Exclude this 1006 error code
+    if(event.code === 1006) return;
     console.error("Flusk Activity Logger was closed for unexpected reasons. Reason: " + event.reason + ". Code: " + event.code);
 };
 
